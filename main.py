@@ -10,6 +10,7 @@ import jwt
 
 # pylint: disable=import-error
 from flask import Flask, jsonify, request, abort
+from bottle import route
 
 
 JWT_SECRET = os.environ.get('JWT_SECRET', 'edu123')
@@ -63,6 +64,9 @@ def require_jwt(function):
 def health():
     return jsonify("Healthy")
 
+@APP.route('hey', methods=['POST'])
+def hey():
+    return jsonify("Just an extra endpoint")
 
 @APP.route('/auth', methods=['POST'])
 def auth():
