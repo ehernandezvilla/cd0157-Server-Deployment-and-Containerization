@@ -39,6 +39,8 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
         - echo `ls -l`
         - pip3 install -r requirements.txt
+        - pip install bottle
+        - python -m pytest test_main.py
   build:
     commands:
       - docker build --tag $REPOSITORY_URI:$TAG .
