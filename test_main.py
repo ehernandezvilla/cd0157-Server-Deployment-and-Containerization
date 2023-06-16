@@ -20,12 +20,15 @@ def client():
     yield client
 
 
-
 def test_health(client):
     response = client.get('/')
-    assert False
     assert response.status_code == 200
     assert response.json == 'Healthy'
+
+def test_hey(client):
+    response = client.get('/hey')
+    assert response.status_code == 200
+    assert response.json == 'Hey'
 
 
 def test_auth(client):
